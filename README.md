@@ -21,3 +21,11 @@ cd clouddash
 npm install
 npm start
 ```
+
+## Screen shots
+
+The main dashboard
+![Alt text](screenshots/clouddash-main.png)
+
+The details screen
+![Alt text](screenshots/clouddash-details.png)
