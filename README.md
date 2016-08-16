@@ -7,7 +7,7 @@ JS libraries from the respective cloud providers.
 
 ## Demo
 
-Checkout the demo at gulamshakir.com/app/clouddash
+Checkout the demo at [gulamshakir.com/app/clouddash]
 (https://gulamshakir.com/app/clouddash). No credentials are passed to the
 servers and only used on your browser.
 
