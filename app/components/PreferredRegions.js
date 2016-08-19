@@ -4,6 +4,7 @@ import MainContainer from '../components/MainContainer'
 
 function PreferredRegions (props) {
     const preferredRegions = props.preferredRegions
+        console.log("Rendering list");
     return (
         <MainContainer>
             <div className='col-sm-4 col-sm-offset-4 text-left'>

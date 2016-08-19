@@ -1,5 +1,5 @@
-import React, { PropTypes } from 'react'
-import { Table, Button } from 'react-bootstrap'
+import React from 'react'
+import { Button } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
 const renderEc2SecurityGroups = (serviceData, region) => {
@@ -108,6 +108,7 @@ function renderLinkFor(pathname, text, query, key) {
     )
 }
 
+// eslint-disable-next-line
 function renderLinkForCell(cell, row) {
     return (
         <LinkContainer to={{ pathname: '/dashboard' }}>

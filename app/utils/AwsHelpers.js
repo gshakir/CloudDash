@@ -1,7 +1,6 @@
 import 'aws-sdk/dist/aws-sdk'
 import 'babel-polyfill'
 import { getEc2Api } from '../utils/AwsEc2Helpers'
-import axios from 'axios'
 
 const AWS = window.AWS;
 
@@ -72,18 +71,13 @@ export function enabledAwsServices() {
 export function isLoggedIn() {
     console.log("Checking AWS credentials object")
     let loggedIn = false
-    if (AWS.config.credentials) {
-        console.log("Valid credentials")
-        console.log(AWS.config.credentials.accessKeyId)
-        console.log(AWS.config.credentials.secretAccessKey)
-        loggedIn = AWS.config.credentials.accessKeyId && AWS.config.credentials.secretAccessKey
-        console.log("Logged in is: " + loggedIn)
-    }
+    loggedIn = AWS.config.credentials && AWS.config.credentials.accessKeyId && AWS.config.credentials.secretAccessKey
+    console.log("Logged in is: " + loggedIn)
     return loggedIn
 }
 
 export function allAwsRegions() {
-    let allRegions = JSON.parse(localStorage.getItem(LsAwsRegions))
+    let allRegions = JSON.parse(localStorage.getItem(LsAwsRegions)) || defaultAwsRegions
     return allRegions;
 }
 
@@ -97,17 +91,6 @@ export function saveAwsPreferredServices(preferredServices) {
 
 export function preferredAwsRegions() {
     let preferredRegions = JSON.parse(localStorage.getItem(LsAwsPreferredRegions)) || defaultAwsRegions
-    /*
-    axios.get(`http://freegeoip.net/json/`)
-        .then(function (response) {
-            console.log("geo ip");
-            console.log(response);
-        })
-        .catch(function (response) {
-            console.log("geo ip error");
-            console.log(response);
-        });
-        */
    return preferredRegions;
 
 }
@@ -134,27 +117,22 @@ export function loginFromUI(awsKey, awsSecret, saveCredentials) {
 export function awsPromise(request) {
     return new Promise(
         function (resolve, reject) {
-            request.
-                on('success', function(response) {
+            request
+                .on('success', function(response) {
                     console.log("success complete");
                     console.log(response);
-                    //resolve(response);
-                    window.setTimeout(
-                        function() {
-                            // We fulfill the promise !
-                            resolve(response);
-                        }, Math.random() * 1000 + 1000);
-                }).
-                on('error', function(response) {
+                    resolve(response);
+                })
+                .on('error', function(response) {
                     console.log("error complete");
                     console.log(response);
                     reject(response);
-                }).
-                on('complete', function(response) {
+                })
+                .on('complete', function(response) {
                     //console.log("Request complete");
                     //console.log(response);
-                }).
-                send();
+                })
+                .send();
         });
 }
 

@@ -1,5 +1,4 @@
 import 'aws-sdk/dist/aws-sdk'
-import { awsRegions } from '../utils/AwsHelpers'
 import { awsPromise } from '../utils/AwsHelpers'
 const AWS = window.AWS;
 

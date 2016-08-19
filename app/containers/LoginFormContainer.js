@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import LoginForm from '../components/LoginForm'
 import { loginFromUI } from '../utils/AwsHelpers'
-import { inputNormal } from '../styles'
-import { inputRequired } from '../styles'
 
 class LoginFormContainer extends Component {
   constructor () {
@@ -64,7 +62,7 @@ class LoginFormContainer extends Component {
     }
     else {
         console.log("No Key or Secret" + awsKey + " " + awsSecret);
-        inErrorState();
+        this.inErrorState();
     }
   }
 
@@ -103,7 +101,7 @@ class LoginFormContainer extends Component {
   }
 
   render () {
-    //console.log("Render");
+    console.log("Render LoginForm");
     return (
       <LoginForm
         onSubmitUser={(event) => this.handleSubmitUser(event)}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Router, Route, hashHistory, IndexRoute, IndexRedirect } from 'react-router'
+import { Router, Route, hashHistory, IndexRedirect } from 'react-router'
 import MainTemplate from '../components/MainTemplate'
 import LoginFormContainer from '../containers/LoginFormContainer'
 import LogoutContainer from '../containers/LogoutContainer'
@@ -26,7 +26,7 @@ const routes = (
       <Route path='login' header='Login' component={LoginFormContainer} />
       <Route path='logout' header='Logout' component={LogoutContainer} />
       <Route path='regions' header='AWS Regions' component={PreferredRegionsContainer} />
-      <Route path='services' header='AWS Regions' component={PreferredServicesContainer} />
+      <Route path='services' header='AWS Services' component={PreferredServicesContainer} />
       <Route path='dashboard' header='Dashboard' component={DashboardContainer} onEnter={requireAuth} />
       <Route path='services/:service/:component' header='Service Details' component={ServiceContainer} onEnter={requireAuth}  />
     </Route>

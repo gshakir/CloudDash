@@ -1,7 +1,4 @@
 import React, { Component } from 'react'
-import MainContainer from '../components/MainContainer'
-import { preferredAwsRegions, enabledAwsServices } from '../utils/AwsHelpers'
-import { callAwsService } from '../utils/AwsHelpers'
 import ServiceDetail from '../components/ServiceDetail'
 
 class ServiceDetailContainer extends Component {
