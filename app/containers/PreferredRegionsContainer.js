@@ -6,6 +6,7 @@ import { allAwsRegions, saveAwsPreferredRegions, preferredAwsRegions } from '../
 class PreferredRegionsContainer extends Component {
   constructor () {
     super()
+    console.log("preferredRegions constructor");
     let preferredRegions = new Set(preferredAwsRegions())
     let allRegions = allAwsRegions()
       this.state = {
@@ -22,6 +23,7 @@ class PreferredRegionsContainer extends Component {
       console.log(selected)
 
       let preferredRegions = this.state.preferredRegions;
+      // eslint-disable-next-line
       (selected) ?  preferredRegions.delete(region) :  preferredRegions.add(region);
       saveAwsPreferredRegions(preferredRegions)
       this.setState({
@@ -38,11 +40,13 @@ class PreferredRegionsContainer extends Component {
     console.log("Preferred Regions Container Render");
     console.log(this.state)
     return (
+        <div className="preferredRegions">
         <PreferredRegions
             allRegions={this.state.allRegions}
             preferredRegions={this.state.preferredRegions}
             onSelectRegion={(event) => this.handleSelectRegion(event)}
         />
+        </div>
     )
   }
 }

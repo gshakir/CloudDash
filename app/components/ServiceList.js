@@ -1,6 +1,4 @@
 import React, { PropTypes } from 'react'
-import { Table, Button } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
 import Loading from './Loading'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
 import { getServiceDisplayData } from './ServiceDisplayData'
@@ -31,11 +29,11 @@ function renderTable(dataFunction, serviceData, region, selected, onSelectRow, o
    const columnData = data.columnData
    const tableData = data.tableData
 
-   const sizePerPage =  parseInt(localStorage.getItem(SizePerPageOption)) || 5 
+   const sizePerPage =  parseInt(localStorage.getItem(SizePerPageOption), 10) || 5 
    let startPage = 1
    if(selected) {
        const selectedIndex = tableData.findIndex(row => (selected === data.keyIdFunction(row)))
-       startPage = parseInt((selectedIndex / sizePerPage) + 1)
+       startPage = parseInt((selectedIndex / sizePerPage) + 1, 10)
    }
    console.log("selected and startpage: " + selected + " -> " + startPage)
 

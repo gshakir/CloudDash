@@ -6,6 +6,7 @@ import { saveAwsPreferredServices, preferredAwsServices, enabledAwsServices } fr
 class PreferredServicesContainer extends Component {
   constructor () {
     super()
+    console.log("preferredServices constructor")
     let preferredServices = new Set(preferredAwsServices())
     let allServices = enabledAwsServices().map((s) => s.display)
       this.state = {
@@ -22,6 +23,7 @@ class PreferredServicesContainer extends Component {
       console.log(selected)
 
       let preferredServices = this.state.preferredRegions;
+      // eslint-disable-next-line
       (selected) ?  preferredServices.delete(region) :  preferredServices.add(region);
       saveAwsPreferredServices(preferredServices)
       this.setState({
@@ -31,23 +33,26 @@ class PreferredServicesContainer extends Component {
   }
 
   componentDidMount() {
+      console.log("preferredServices componentDidMount");
     
   }
 
   render () {
-    console.log("Preferred Regions Container Render");
+    console.log("Preferred Services Container Render");
     console.log(this.state)
     return (
+        <div className="preferredServices">
         <PreferredRegions
             allRegions={this.state.allRegions}
             preferredRegions={this.state.preferredRegions}
             onSelectRegion={(event) => this.handleSelectService(event)}
         />
+        </div>
     )
   }
 }
 
-PreferredServicesContainer .contextTypes = {
+PreferredServicesContainer.contextTypes = {
   router: React.PropTypes.object.isRequired
 }
 

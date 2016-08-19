@@ -1,6 +1,4 @@
 import React, { PropTypes } from 'react'
-import { Table, Button } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
 import Loading from './Loading'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
 import { getServiceDisplayData } from './ServiceDisplayData'
@@ -29,7 +27,7 @@ function renderTable(dataFunction, serviceData, region, selected, selectedIndex)
    const tableData = data.tableData
    
    const SizePerPageOption = 'SizePerPageOption'
-   const sizePerPage =  parseInt(localStorage.getItem(SizePerPageOption)) || 5 
+   const sizePerPage =  parseInt(localStorage.getItem(SizePerPageOption), 10) || 5 
    let index = 0
 
    if (selected) {
@@ -42,8 +40,8 @@ function renderTable(dataFunction, serviceData, region, selected, selectedIndex)
    //
    if (typeof selectedIndex !== 'undefined') {
        if (selected) {
-           const selectedPage = parseInt((selectedIndex / sizePerPage) + 1)
-           const highlightedPage = parseInt((index / sizePerPage) + 1)
+           const selectedPage = parseInt((selectedIndex / sizePerPage) + 1, 10)
+           const highlightedPage = parseInt((index / sizePerPage) + 1, 10)
            console.log("Selected page: " + selectedPage);
            console.log("Highlighted page: " + highlightedPage);
            if (selectedPage !== highlightedPage) {

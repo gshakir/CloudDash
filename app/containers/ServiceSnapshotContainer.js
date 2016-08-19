@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import ServiceSnapshotWrapper from '../components/ServiceSnapshotWrapper'
 import ServiceSnapshot from '../components/ServiceSnapshot'
 import { callAwsService } from '../utils/AwsHelpers'
-import { awsRegions } from '../utils/AwsHelpers'
 
 class ServiceSnapshotContainer extends Component {
   constructor () {
