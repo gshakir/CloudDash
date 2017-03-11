@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ServiceSnapshotContainer from '../containers/ServiceSnapshotContainer'
 import MainContainer from '../components/MainContainer'
 import { preferredAwsRegions, preferredAwsServices, enabledAwsServices } from '../utils/AwsHelpers'
+import { callAwsService } from '../utils/AwsHelpers'
 
 class DashboardContainer extends Component {
   constructor () {
@@ -17,6 +18,14 @@ class DashboardContainer extends Component {
 
   render () {
     console.log("Dashboard AWS Render");
+
+    const cwPromise = callAwsService('cloudWatch', 'GetMetrics', 'us-east-1')
+    cwPromise.then(data => {
+            console.log('Cloudwatch');
+            console.log(data)
+            console.log('Cloudwatch done');
+    });
+
     let preferredServices = new Set(preferredAwsServices())
     const services = this.state.enabledAwsServices.filter(s => preferredServices.has(s.display))
 

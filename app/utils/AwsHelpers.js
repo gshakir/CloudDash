@@ -1,6 +1,7 @@
 import 'aws-sdk/dist/aws-sdk'
 import 'babel-polyfill'
 import { getEc2Api } from '../utils/AwsEc2Helpers'
+import { getCloudWatchApi } from '../utils/AwsCloudWatchHelpers'
 
 const AWS = window.AWS;
 
@@ -13,6 +14,7 @@ export const LsAwsSecretAccessKey = 'AwsSecretAccessKey'
 
 let awsServices = new Map();
 awsServices.set("ec2", getEc2Api);
+awsServices.set("cloudWatch", getCloudWatchApi);
 const services = [
     {name: 'ec2', component: 'Instances', display: 'Instances', enabled: true},
     {name: 'ec2', component: 'Addresses', display: 'Elastic IPs', enabled: true},
